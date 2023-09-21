@@ -19,7 +19,7 @@
     <main id="formMain">
         <div id="formContainer">
             <h3>cadastre-se</h3>
-            <form method="post">
+            <form method="post" id="formulario">
                 <div class="inputContainer">
                     <label for="nome">Nome:</label>
                     <input type="text" name="nome" id="nome">
@@ -36,6 +36,7 @@
                     <label for="repeatPassword">Repita a senha:</label>
                     <input type="password" name="repeatPassword" id="repeatPassword">
                 </div>
+                <button type="submit" id="submit">Criar conta</button>
             </form>
         </div>
     </main>
