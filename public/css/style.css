@@ -83,6 +83,37 @@ body {
     line-height: 1rem;
 }
 
+#menu {
+    display: none !important;
+    position: absolute;
+    right: 1rem;
+    top: 5.5rem;
+    background-color: var(--white);
+    padding: .5rem .25rem;
+    width: 15rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    border-radius: .5rem;
+
+    flex-direction: column;
+}
+
+.profileImg {
+    cursor: pointer;
+}
+
+#menu.active {
+    display: flex !important;
+}
+
+#menu .deslogar {
+    width: 100%;
+    background-color: var(--main);
+    text-align: center;
+    color: var(--white);
+    padding: .25rem 0;
+    border-radius: 999px;
+}
+
 #formMain {
     background-size: cover;
     background-repeat: no-repeat;
@@ -147,7 +178,7 @@ body {
 }
 
 main {
-    padding-top: 5rem;
+    padding-top: 5.5rem;
     position: relative;
     min-height: 100vh;
 }
@@ -211,6 +242,7 @@ main {
 .inner figure figcaption {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     padding: .5rem 0;   
 }
@@ -219,3 +251,4 @@ main {
     font-weight: bold;
     font-size: 1.5rem;
 }
+
