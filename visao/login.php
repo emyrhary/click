@@ -4,6 +4,7 @@ if (!isset($_SESSION["usuario"])) {
     $logado = false;
 } else {
     $logado = true;
+    header("Location: /click/visao");
 }
 ?>
 <!DOCTYPE html>
@@ -38,7 +39,7 @@ if (!isset($_SESSION["usuario"])) {
     <main id="formMain">
         <div id="formContainer">
             <h3>Entrar</h3>
-            <form method="post" id="formulario">
+            <form method="post" id="formulario" action= "../processadores/processar-login.php">
                 <div class="inputContainer">
                     <label for="email">Email:</label>
                     <input type="email" name="email" id="email">
