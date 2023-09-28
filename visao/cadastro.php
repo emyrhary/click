@@ -4,9 +4,7 @@ if (!isset($_SESSION["usuario"])) {
     $logado = false;
 } else {
     $logado = true;
-    header("Location: /click/visao");
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -41,7 +39,7 @@ if (!isset($_SESSION["usuario"])) {
         <div id="formContainer">
             <h3>cadastre-se</h3>
             
-            <form method="post" id="formulario" action="../processadores/processar-cadastro.php">
+            <form method="post" id="formulario">
                 <div class="inputContainer">
                     <label for="nome">Nome:</label>
                     <input type="text" name="nome" id="nome">
@@ -60,22 +58,8 @@ if (!isset($_SESSION["usuario"])) {
                 </div>
                 <button type="submit" id="submit">Criar conta</button>
             </form>
-
-            <?php 
-            if(isset($_GET["erro"])){
-                //echo "erro! senha e confirmar senha não são iguais";
-            ?>
-                <label for="erro"></br> senha e confirmar senha não são iguais.</label>
-            <?php }
-            ?>
         </div>
     </main>
-
-    <?php    
-    include 'conexao.php';
-    include '../modelo/Usuario.php';
-    ?>
-
     <footer></footer>
 </body>
 </html>

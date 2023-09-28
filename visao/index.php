@@ -35,5 +35,80 @@ if (!isset($_SESSION["usuario"])) {
             ?>
         </div>
     </header>
+    <main>
+        <div id="adicionarPost">
+            <button>
+                +
+            </button>
+        </div>
+        <section class="inner">
+            <figure>
+                <img src="../public/imgs/20191226_120128.jpg">
+                <figcaption>
+                    <h3>Nome da img</h3>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="../public/imgs/20191226_120223.jpg">
+                <figcaption>
+                    <h3>Nome da img</h3>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="../public/imgs/20211202_173046.jpg">
+                <figcaption>
+                    <h3>Nome da img</h3>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="../public/imgs/20200103_155250.jpg">
+                <figcaption>
+                    <h3>Nome da img</h3>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="../public/imgs/20200103_154924.jpg">
+                <figcaption>
+                    <h3>Nome da img</h3>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="../public/imgs/20211202_173033.jpg">
+                <figcaption>
+                    <h3>Nome da img</h3>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="../public/imgs/IMG-20210930-WA0219.jpg">
+                <figcaption>
+                    <h3>Nome da img</h3>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="../public/imgs/IMG-20210930-WA0082.jpg">
+                <figcaption>
+                    <h3>Nome da img</h3>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="../public/imgs/20200103_154152.jpg">
+                <figcaption>
+                    <h3>Nome da img</h3>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="../public/imgs/20191226_122131.jpg">
+                <figcaption>
+                    <h3>Nome da img</h3>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="../public/imgs/20211002_140847.jpg">
+                <figcaption>
+                    <h3>Nome da img</h3>
+                </figcaption>
+            </figure>
+        </section>
+    </main>
 </body>
 </html>
