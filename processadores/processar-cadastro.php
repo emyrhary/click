@@ -13,6 +13,7 @@
             if ($usuario->cadastrar($nome,$email,$senha)){
                 session_start();
                 $_SESSION["usuario"] = $usuario;
+                $_SESSION["email"] = $email;
                 header("Location: /click/visao");
                 exit();
             }

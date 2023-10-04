@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Set-2023 às 20:33
+-- Tempo de geração: 05-Out-2023 às 01:08
 -- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 8.0.19
+-- versão do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `posts`
+--
+
+CREATE TABLE `posts` (
+  `url` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `descricao` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `usuario`
 --
 
@@ -34,18 +47,14 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `usuario`
---
-
-INSERT INTO `usuario` (`nome`, `email`, `senha`) VALUES
-('fillip', '', '$2y$10$ttpTrfpUv1D600so680.ne.IMfnmlUHQmbfUv8f0ta4RrPPfINMaS'),
-('b', 'bb@b', '$2y$10$4CXZFZxooZB7QLIknD4tw.1PPN/9IJ/BrjzZ3/sGiOPDDegmiTdCW'),
-('jenni', 'bejenfa@gmail.com', '$2y$10$O5R.flv59HVfLNu0Jn9JwuAritSegBtg0mXR6708R1e148u7XLVSS'),
-('emily', 'emily.furtado8@gmail.com', '$2y$10$eQUwK.T2SBzE16KhsmkmP.RC9f11oxS5RHB/Vg2I1iSAd/vCn8afK');
-
---
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices para tabela `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`url`);
 
 --
 -- Índices para tabela `usuario`

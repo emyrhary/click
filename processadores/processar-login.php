@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] =="POST"){
     if ($usuario){
         session_start();
         $_SESSION["usuario"] = $usuario;
+        $_SESSION["email"] = $email;
         header("Location: /click/visao");
         exit;
     }else{

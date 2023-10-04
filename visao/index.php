@@ -1,4 +1,5 @@
 <?php
+require "../conexao.php";
 session_start();
 if (!isset($_SESSION["usuario"])) {
     $logado = false;
@@ -28,6 +29,8 @@ if (!isset($_SESSION["usuario"])) {
                     echo
                     '<img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" onClick="toggleMenu()" class="profileImg">
                     <div id="menu">
+                        <h3>Deseja sair do seu perfil?</h3>
+                    
                         <a href="/click/processadores/processar-loggout.php?token='.md5(session_id()).'" class="deslogar">Sair</a>
                     </div>';
                 } else {
@@ -46,94 +49,56 @@ if (!isset($_SESSION["usuario"])) {
         <?php
             if ($logado) {
                 echo
-                    '<button id="adicionarPost">
+                    '<a id="adicionarPost" href="/click/visao/adicionar.php">
                         
                          +
                         
-                    </button>';
-                } else {
-                    echo '';
-            }?>
-
-        
+                    </a>';
+                }
+        ?>
         <section class="inner">
-            <figure>
-                <img src="../public/imgs/20191226_120128.jpg">
-                <figcaption>
-                    <h3>Nome da img</h3>
-                    <i class="fa-solid fa-thumbtack"></i>
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="../public/imgs/20191226_120223.jpg">
-                <figcaption>
-                    <h3>Nome da img</h3>
-                    <i class="fa-solid fa-thumbtack"></i>
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="../public/imgs/20211202_173046.jpg">
-                <figcaption>
-                    <h3>Nome da img</h3>
-                    <i class="fa-solid fa-thumbtack"></i>
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="../public/imgs/20200103_155250.jpg">
-                <figcaption>
-                    <h3>Nome da img</h3>
-                    <i class="fa-solid fa-thumbtack"></i>
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="../public/imgs/20200103_154924.jpg">
-                <figcaption>
-                    <h3>Nome da img</h3>
-                    <i class="fa-solid fa-thumbtack"></i>
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="../public/imgs/20211202_173033.jpg">
-                <figcaption>
-                    <h3>Nome da img</h3>
-                    <i class="fa-solid fa-thumbtack"></i>
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="../public/imgs/IMG-20210930-WA0219.jpg">
-                <figcaption>
-                    <h3>Nome da img</h3>
-                    <i class="fa-solid fa-thumbtack"></i>
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="../public/imgs/IMG-20210930-WA0082.jpg">
-                <figcaption>
-                    <h3>Nome da img</h3>
-                    <i class="fa-solid fa-thumbtack"></i>
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="../public/imgs/20200103_154152.jpg">
-                <figcaption>
-                    <h3>Nome da img</h3>
-                    <i class="fa-solid fa-thumbtack"></i>
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="../public/imgs/20191226_122131.jpg">
-                <figcaption>
-                    <h3>Nome da img</h3>
-                    <i class="fa-solid fa-thumbtack"></i>
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="../public/imgs/20211002_140847.jpg">
-                <figcaption>
-                    <h3>Nome da img</h3>
-                    <i class="fa-solid fa-thumbtack"></i>
-                </figcaption>
-            </figure>
+            <?php
+                $imagens = "SELECT * FROM posts ORDER BY url DESC";
+                $res = mysqli_query($conn, $imagens);
+                $pasta = "../public/imgs/*";
+                $imagensProntas = glob($pasta);
+
+
+                if (mysqli_num_rows($res) > 0) {
+                    while ($imagem = mysqli_fetch_assoc($res)) {?>
+                        
+
+                        <figure onclick="redirecionar('/click/visao/publicacao.php?id=<?=$imagem['url']?>')">
+                                <img src="../../click/public/imgs/<?=$imagem['url']?>">
+                                <figcaption>
+                                    <h3><?=$imagem['titulo']?></h3>
+                                    <i class="fa-solid fa-thumbtack"></i>
+                                </figcaption>
+                        </figure>
+                        
+                    <?php };
+                }
+
+                // for ($i=0; $i < count($imagensProntas) ; $i++) { 
+                //     $url = $imagensProntas[$i];
+                    
+                //     if (str_starts_with($url, '../public/imgs/upload-')) {
+                //         return null;
+                //     } else {
+                //         echo "
+                //             <figure>
+                //                 <img src='$url'>
+                //                 <figcaption>
+                //                     <h3>Imagem de teste</h3>
+                //                     <i class='fa-solid fa-thumbtack'></i>
+                //                 </figcaption>
+                //             </figure>
+                //         ";
+                //     }
+                // }
+
+            ?>
+
         </section>
     </main>
 </body>

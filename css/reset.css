@@ -259,6 +259,10 @@ button:disabled,
     cursor: default;
 }
 
+input:focus {
+    outline: none;
+}
+
 /**
  * Improve outlines for Firefox and unify style with input elements & buttons.
  */
