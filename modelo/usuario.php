@@ -4,6 +4,7 @@ class Usuario{
     private $nome;
     private $email;
     private $senha;
+    private $username;
 
     function __construct($conn){
         $this->conn = $conn;
@@ -26,14 +27,26 @@ class Usuario{
     function set_senha($senha){
         $this->senha = $senha;
     }
-    function cadastrar($nome, $email, $senha) {
+    function get_username(){
+        return $this->username;
+    }
+    function set_username($username){
+        $this->username = $username; 
+    }
+
+    function cadastrar($nome, $email, $senha, $username) {
         $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO usuario (nome, email, senha) VALUES 
+        $sql = "INSERT INTO usuario (email, senha) VALUES 
+            (?, ?)";
+        $sqli = "INSERT INTO perfil (nome, email, username) VALUES 
             (?, ?, ?)";
+
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("sss", $nome, $email, $senhaHash);
+        $stmt->bind_param("ss", $email, $senhaHash);
         
-        if ($stmt->execute()) {
+        $stmti = $this->conn->prepare($sqli);
+        $stmti->bind_param("sss", $nome, $email, $username);
+        if ($stmt->execute() && $stmti->execute()) {
             return true;
         } else {
             return false;

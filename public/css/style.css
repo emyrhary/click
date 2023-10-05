@@ -86,8 +86,10 @@ body {
 }
 
 .profileImg {
-    max-width: 3rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 999px;
+    object-fit: cover;
 }
 
 #menu {
@@ -162,7 +164,7 @@ body {
     max-width: 20rem;
 }
 
-.inputContainer input {
+.inputContainer input, .inputContainer textarea {
     width: 100%;
     appearance: none;
     border: none;

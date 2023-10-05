@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05-Out-2023 às 01:08
+-- Tempo de geração: 05-Out-2023 às 21:21
 -- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 8.1.6
+-- versão do PHP: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `perfil`
+--
+
+CREATE TABLE `perfil` (
+  `nome` varchar(100) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `bio` varchar(50) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `img_perfil` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `perfil`
+--
+
+INSERT INTO `perfil` (`nome`, `username`, `bio`, `email`, `img_perfil`) VALUES
+('aa', 'user-651f0b114acc63.', '', 'aa@a', ''),
+('emily', 'emy', '', 'emily.furtado8@gmail.com', ''),
+('fillip', 'malvadonasafada', '', 'fillipgms@gmail.com', 'upload-651f026f84b760.56720188.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `posts`
 --
 
@@ -34,6 +57,21 @@ CREATE TABLE `posts` (
   `descricao` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `posts`
+--
+
+INSERT INTO `posts` (`url`, `email`, `titulo`, `descricao`) VALUES
+('upload-651efa4334b5e0.34095388.jpg', 'emily.furtado8@gmail.com', 'Genebra - Suíça', '26/12/2019'),
+('upload-651efa8818ecd9.52310970.jpg', 'emily.furtado8@gmail.com', 'Genebra - Suíça', '26/12/2019.'),
+('upload-651efac99ff7a5.39898785.jpg', 'emily.furtado8@gmail.com', 'Genebra - Suíça', '03/01/2020'),
+('upload-651efb23efd326.25052495.jpg', 'emily.furtado8@gmail.com', 'Genebra - Suíça', '03/01/2020'),
+('upload-651efbd4cbf797.77772716.jpg', 'emily.furtado8@gmail.com', 'Balneário do Camboriu - SC', '2021'),
+('upload-651efbe97db8f0.74315920.jpg', 'emily.furtado8@gmail.com', 'Avião', '.'),
+('upload-651efc479b4287.67406408.jpg', 'emily.furtado8@gmail.com', 'Gatitos', 'Pandora e Atlas'),
+('upload-651f026f84b760.56720188.jpg', 'fillipgms@gmail.com', 'meu bicinho de pelucia', '123123'),
+('upload-651f0b5d9d1cd9.41129987.jpg', 'aa@a', 'aaa', 'aaaa');
+
 -- --------------------------------------------------------
 
 --
@@ -41,14 +79,29 @@ CREATE TABLE `posts` (
 --
 
 CREATE TABLE `usuario` (
-  `nome` varchar(255) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`email`, `senha`) VALUES
+('aa@a', '$2y$10$arAHvW8ETHySnN5l4yQvsObl1KtvqAXLt3GPZcIRtYYhi1xNglw7m'),
+('emily.furtado8@gmail.com', '$2y$10$dMtoCOG3jQOGCK4oOn7A4OLxEj7G/qBJN9rpXFUeepbjGMfeQnuES'),
+('fillipgms@gmail.com', '$2y$10$S0WuKl34Zw1EY.FaF7sg6OnvQqOra1UceSSq3AS5yeO1B7SPaE/vm');
+
+--
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices para tabela `perfil`
+--
+ALTER TABLE `perfil`
+  ADD PRIMARY KEY (`email`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Índices para tabela `posts`

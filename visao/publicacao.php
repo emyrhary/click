@@ -20,31 +20,9 @@ if (!isset($_SESSION["usuario"])) {
     <script src="../public/js/script.js" defer></script>
 </head>
 <body>
-    <header id="header">
-        <a href="/click/visao" id="logo">click!</a>
-        <div>
-            <input type="text" name="pesquisa" id="pesquisa">
-            <?php 
-                if ($logado) {
-                    echo
-                    '<img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" onClick="toggleMenu()" class="profileImg">
-                    <div id="menu">
-                        <h3>Deseja sair do seu perfil?</h3>
-                    
-                        <a href="/click/processadores/processar-loggout.php?token='.md5(session_id()).'" class="deslogar">Sair</a>
-                    </div>';
-                } else {
-                    echo '
-                    <div class="conta">
-                        <a href="/click/visao/login.php">Entrar</a>
-                        <a href="/click/visao/cadastro.php">Criar conta</a>
-                    </div>';
-                }
-        
-            ?>
-        </div>
-        
-    </header>
+    <?php
+        include("../components/header.php")
+    ?>
     <main>
         <?php
             if ($logado) {
@@ -61,8 +39,10 @@ if (!isset($_SESSION["usuario"])) {
                 if(isset($_GET['id'])) {
                     $post = $_GET['id'];
                     $comando = "SELECT * FROM posts WHERE url = ?";
+                    $username = "SELECT username from perfil WHERE email = ?";
                     $stmt = mysqli_prepare($conn, $comando);
-                    mysqli_stmt_bind_param($stmt, "s", $post);
+                    
+                    mysqli_stmt_bind_param($stmt, "s", $post);  
                     mysqli_stmt_execute($stmt);
                     $postEscolhido = mysqli_stmt_get_result($stmt);
 
@@ -83,7 +63,15 @@ if (!isset($_SESSION["usuario"])) {
                                 <div id="perfilPublicado">
                                     <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"class="profileImg">
                                     <h3>
-                                    @tal pessoa
+                                        <?php    
+                                            $stmti =  mysqli_prepare($conn, $username);
+                                            mysqli_stmt_bind_param($stmti, "s", $imagem["email"]);
+                                            mysqli_stmt_execute($stmti);
+                                            $username = mysqli_stmt_get_result($stmti);
+                                            $username = mysqli_fetch_assoc($username);
+
+                                            echo "@".$username["username"];
+                                        ?>
                                     </h3>
                                 </div>
                                 <div id="descricao">

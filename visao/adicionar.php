@@ -1,12 +1,11 @@
 <?php
+require "../conexao.php";
 session_start();
 if (!isset($_SESSION["usuario"])) {
     $logado = false;
-    header("Location: /click/visao");
 } else {
     $logado = true;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,31 +20,9 @@ if (!isset($_SESSION["usuario"])) {
     <script src="../public/js/script.js" defer></script>
 </head>
 <body>
-    <header id="header">
-        <a href="/click/visao" id="logo">click!</a>
-        <div>
-            <input type="text" name="pesquisa" id="pesquisa">
-            <?php 
-                if ($logado) {
-                    echo
-                    '<img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" onClick="toggleMenu()" class="profileImg">
-                    <div id="menu">
-                        <h3>Deseja sair do seu perfil?</h3>
-                    
-                        <a href="/click/processadores/processar-loggout.php?token='.md5(session_id()).'" class="deslogar">Sair</a>
-                    </div>';
-                } else {
-                    echo '
-                    <div class="conta">
-                        <a href="/click/visao/login.php">Entrar</a>
-                        <a href="/click/visao/cadastro.php">Criar conta</a>
-                    </div>';
-                }
-        
-            ?>
-        </div>
-        
-    </header>
+    <?php
+        include("../components/header.php")
+    ?>
     <main>
         <form action="../processadores/processar-enviar-imagem.php"
             method="post"
@@ -61,12 +38,12 @@ if (!isset($_SESSION["usuario"])) {
                 <div id="inputs">
                     <div class="inputContainer">
                         <label for="tituloDaImagem">Título:</label>
-                        <input type="text" name="tituloDaImagem" id="tituloDaImagem" required>
+                        <input type="text" name="tituloDaImagem" id="tituloDaImagem" maxlength="50" required>
                     </div>
                     
                     <div class="inputContainer">
                         <label for="descricaoDaImagem">Descrição:</label>
-                        <textarea name="descricaoDaImagem" id="descricaoDaImagem" cols="30" rows="10" required></textarea>
+                        <textarea name="descricaoDaImagem" id="descricaoDaImagem" cols="30" rows="10" maxlength="255" required></textarea>
                     </div>
                     
                     <input type="submit"  name="enviar" value="enviar imagem">

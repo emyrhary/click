@@ -7,10 +7,11 @@
         $email = $_POST["email"];
         $senha = $_POST["Senha"];
         $repetirsenha = $_POST["repeatPassword"];
+        $username  = uniqid("user-", true);
 
         if ($senha === $repetirsenha) {
             $usuario = new Usuario($conn);
-            if ($usuario->cadastrar($nome,$email,$senha)){
+            if ($usuario->cadastrar($nome,$email,$senha,$username)){
                 session_start();
                 $_SESSION["usuario"] = $usuario;
                 $_SESSION["email"] = $email;
