@@ -17,6 +17,7 @@ if (!isset($_SESSION["usuario"])) {
     <title>cadastro!</title>
     <link rel="stylesheet" href="../public/css/style.css">
     <link rel="stylesheet" href="../public/css/reset.css">
+    <script src="../public/js/script.js" defer></script>
 </head>
 <body>
     <header id="header">

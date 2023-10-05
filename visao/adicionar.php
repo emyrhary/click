@@ -18,7 +18,7 @@ if (!isset($_SESSION["usuario"])) {
     <link rel="stylesheet" href="../public/css/style.css">
     <link rel="stylesheet" href="../public/css/reset.css">
     <script src="https://kit.fontawesome.com/4c0a49f720.js" crossorigin="anonymous"></script>
-    <script src="../js/script.js" defer></script>
+    <script src="../public/js/script.js" defer></script>
 </head>
 <body>
     <header id="header">
