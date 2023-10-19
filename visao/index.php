@@ -58,23 +58,7 @@ if (!isset($_SESSION["usuario"])) {
                     <?php };
                 }
 
-                // for ($i=0; $i < count($imagensProntas) ; $i++) { 
-                //     $url = $imagensProntas[$i];
-                    
-                //     if (str_starts_with($url, '../public/imgs/upload-')) {
-                //         return null;
-                //     } else {
-                //         echo "
-                //             <figure>
-                //                 <img src='$url'>
-                //                 <figcaption>
-                //                     <h3>Imagem de teste</h3>
-                //                     <i class='fa-solid fa-thumbtack'></i>
-                //                 </figcaption>
-                //             </figure>
-                //         ";
-                //     }
-                // }
+               
 
             ?>
 

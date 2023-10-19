@@ -39,15 +39,22 @@ if (!isset($_SESSION["usuario"])) {
                 if(isset($_GET['id'])) {
                     $post = $_GET['id'];
                     $comando = "SELECT * FROM posts WHERE url = ?";
-                    $username = "SELECT username from perfil WHERE email = ?";
+                    $username = "SELECT * from perfil WHERE email = ?";
                     $stmt = mysqli_prepare($conn, $comando);
+                    $stmti =  mysqli_prepare($conn, $username);
                     
                     mysqli_stmt_bind_param($stmt, "s", $post);  
                     mysqli_stmt_execute($stmt);
                     $postEscolhido = mysqli_stmt_get_result($stmt);
+                    $imagem = mysqli_fetch_assoc($postEscolhido);
+
+                    mysqli_stmt_bind_param($stmti, "s", $imagem["email"]);
+                    mysqli_stmt_execute($stmti);
+                    $username = mysqli_stmt_get_result($stmti);
+                    $usuario = mysqli_fetch_assoc($username);
 
                     if ($postEscolhido) {
-                        $imagem = mysqli_fetch_assoc($postEscolhido);?>
+                    ?>
                         
                         <div id="postContainer">
                             <div id="fotoPublicada">
@@ -61,16 +68,12 @@ if (!isset($_SESSION["usuario"])) {
                             </div>
                             <div id="informacoesPublicadas">
                                 <div id="perfilPublicado">
-                                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"class="profileImg">
+                                    <img src=<?php
+                                        echo "../public/imgs/". $usuario["img_perfil"]; 
+                                    ?> class="profileImg">
                                     <h3>
-                                        <?php    
-                                            $stmti =  mysqli_prepare($conn, $username);
-                                            mysqli_stmt_bind_param($stmti, "s", $imagem["email"]);
-                                            mysqli_stmt_execute($stmti);
-                                            $username = mysqli_stmt_get_result($stmti);
-                                            $username = mysqli_fetch_assoc($username);
-
-                                            echo "@".$username["username"];
+                                        <?php   
+                                            echo "@".$usuario["username"];
                                         ?>
                                     </h3>
                                 </div>

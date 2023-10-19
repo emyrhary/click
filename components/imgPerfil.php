@@ -1,5 +1,5 @@
 <?php   
-    $imgPerfil = "SELECT img_perfil from perfil WHERE email = ?";
+    $imgPerfil = "SELECT * from perfil WHERE email = ?";
 
     $stmt =  mysqli_prepare($conn, $imgPerfil);
     mysqli_stmt_bind_param($stmt, "s", $_SESSION['email']);
