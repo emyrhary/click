@@ -55,7 +55,6 @@ if (!isset($_SESSION["usuario"])) {
 
                     if ($postEscolhido) {
                     ?>
-                        
                         <div id="postContainer">
                             <div id="fotoPublicada">
                                 <figure>
@@ -66,7 +65,7 @@ if (!isset($_SESSION["usuario"])) {
                                     </figcaption>
                                 </figure>
                             </div>
-                            <div id="informacoesPublicadas">
+                            <div id="informacoesPublicadas" onClick="location.href = `/click/visao/perfil.php?usuario=<?=$usuario["username"]?>`">
                                 <div id="perfilPublicado">
                                     <img src=<?php
                                         echo "../public/imgs/". $usuario["img_perfil"]; 

@@ -3,10 +3,16 @@ require "../conexao.php";
 session_start();
 if (!isset($_SESSION["usuario"])) {
     $logado = false;
-    header("Location: /click/visao");
 } else {
     $logado = true;
 }
+
+    $selecionado = $_GET["usuario"];
+    $stmt =  mysqli_prepare($conn, "SELECT * from perfil WHERE username = ?");
+    mysqli_stmt_bind_param($stmt, "s", $selecionado);
+    mysqli_stmt_execute($stmt);
+    $selecionado = mysqli_stmt_get_result($stmt);
+    $selecionado = mysqli_fetch_assoc($selecionado);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +20,7 @@ if (!isset($_SESSION["usuario"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil!</title>
+    <title>Perfil! | <?=$selecionado["nome"]?> </title>
     <link rel="stylesheet" href="../public/css/style.css">
     <link rel="stylesheet" href="../public/css/reset.css">
     <script src="https://kit.fontawesome.com/4c0a49f720.js" crossorigin="anonymous"></script>
@@ -22,26 +28,59 @@ if (!isset($_SESSION["usuario"])) {
 </head>
 <body>
     <?php
-        include("../components/header.php")
+        include("../components/header.php");
+        $isUser = $selecionado["username"] === $imgPerfil["username"];
+        
+        if ($logado) {
+            echo'
+                <a id="adicionarPost" href="/click/visao/adicionar.php">
+                    + 
+                </a>
+            ';
+        }
+        
     ?>
-    <main>
-        <section id="mostrarinfos">
-            <div>
-                <button>
-                    <img src=
-                        <?php
-                            echo "../public/imgs/". $imgPerfil["img_perfil"]; 
-                        ?>
-                    class="profile">
-                </button>
-                <input type="text" name="profileName" id="profileName" value="@<?=$imgPerfil["username"]?>" placeholder="insira seu username desejado" class="username">
-                
-            </div>
-            <div id="nomeebio">
-                <input type="text" name="profileName" id="profileName" value="<?=$imgPerfil["nome"]?>" placeholder="insira seu nome">
-                <textarea name="profileBio" id="profileBio" cols="30" rows="10" value="<?=$imgPerfil["bio"]?>" placeholder="insira sua bio" ></textarea>
-            </div>
 
+    <main id="perfil">
+        <section id="seuPerfil">
+            <div id="profileInfos">
+                <span style="background-image:url(../public/imgs/<?=$imgPerfil["header"]?>);"></span>
+                <img src=
+                    <?php
+                        echo "../public/imgs/". $selecionado["img_perfil"]; 
+                    ?>
+                >
+            </div>
+            <div id="usuario">
+                <h1><?=$selecionado["nome"]?></h1>
+                <h2>@<?=$selecionado["username"]?></h2>
+            </div>
+        </section>
+        <section id="posts">
+            <?php
+
+                $pasta = "../public/imgs/*";
+                $imagensProntas = glob($pasta);
+                $posts = mysqli_query($conn, "SELECT * FROM posts WHERE email = '{$selecionado["email"]}'");
+            ?>
+
+            <div class="inner">
+                <?php
+                if (mysqli_num_rows($posts) > 0) {
+                    while ($imagem = mysqli_fetch_assoc($posts)) {?>
+                        <figure onclick="redirecionar('/click/visao/publicacao.php?id=<?=$imagem['url']?>')">
+                                <img src="../../click/public/imgs/<?=$imagem['url']?>">
+                                <figcaption>
+                                    <h3><?=$imagem['titulo']?></h3>
+                                    <i class="fa-solid fa-thumbtack"></i>
+                                </figcaption>
+                        </figure>
+                        
+                    <?php }} else {
+                        echo "esse usuario aida não fez nenhuma postagem";
+                    }
+                ?>
+            </div>
         </section>
     </main>
 </body>

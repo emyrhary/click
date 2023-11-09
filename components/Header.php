@@ -17,9 +17,9 @@
                 <div id="menu">
                     <h3>Bem vindo, <?=$imgPerfil["nome"]?></h3>
                 
-                    <a href="/click/visao/perfil.php" class="editarperfil">
+                    <a href="/click/visao/perfil.php?usuario=<?=$imgPerfil["username"]?>" class="editarperfil">
                         <i class="fa-solid fa-user"></i>
-                        Editar perfil
+                        Meu Perfil
                     </a>
                     <a href="/click/processadores/processar-loggout.php?token=<?=md5(session_id())?>" class="deslogar">Sair</a>
                 </div>

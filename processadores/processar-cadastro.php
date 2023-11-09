@@ -11,7 +11,7 @@
 
         if ($senha === $repetirsenha) {
             $usuario = new Usuario($conn);
-            if ($usuario->cadastrar($nome,$email,$senha,$username, "profilepicture.webp")){
+            if ($usuario->cadastrar($nome,$email,$senha,$username, "profilepicture.webp", "defaultheader.jpg", 0)){
                 session_start();
                 $_SESSION["usuario"] = $usuario;
                 $_SESSION["email"] = $email;

@@ -34,18 +34,18 @@ class Usuario{
         $this->username = $username; 
     }
 
-    function cadastrar($nome, $email, $senha, $username, $profile) {
+    function cadastrar($nome, $email, $senha, $username, $profile, $header, $adm) {
         $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
         $sql = "INSERT INTO usuario (email, senha) VALUES 
             (?, ?)";
-        $sqli = "INSERT INTO perfil (nome, email, username, img_perfil) VALUES 
-            (?, ?, ?, ?)";
+        $sqli = "INSERT INTO perfil (nome, email, username, img_perfil, header, adm) VALUES 
+            (?, ?, ?, ?, ?, ?)";
 
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("ss", $email, $senhaHash);
         
         $stmti = $this->conn->prepare($sqli);
-        $stmti->bind_param("ssss", $nome, $email, $username, $profile);
+        $stmti->bind_param("ssssss", $nome, $email, $username, $profile, $header, $adm );
         if ($stmt->execute() && $stmti->execute()) {
             return true;
         } else {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05-Out-2023 às 21:21
+-- Tempo de geração: 09-Nov-2023 às 20:19
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.0.19
 
@@ -32,17 +32,21 @@ CREATE TABLE `perfil` (
   `username` varchar(20) NOT NULL,
   `bio` varchar(50) NOT NULL,
   `email` varchar(250) NOT NULL,
-  `img_perfil` varchar(255) NOT NULL
+  `img_perfil` varchar(255) NOT NULL,
+  `header` varchar(255) NOT NULL,
+  `adm` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `perfil`
 --
 
-INSERT INTO `perfil` (`nome`, `username`, `bio`, `email`, `img_perfil`) VALUES
-('aa', 'user-651f0b114acc63.', '', 'aa@a', ''),
-('emily', 'emy', '', 'emily.furtado8@gmail.com', ''),
-('fillip', 'malvadonasafada', '', 'fillipgms@gmail.com', 'upload-651f026f84b760.56720188.jpg');
+INSERT INTO `perfil` (`nome`, `username`, `bio`, `email`, `img_perfil`, `header`, `adm`) VALUES
+('aa', 'user-651f0b114acc63.', '', 'aa@a', 'profilepicture.webp', 'defaultheader.jpg', 0),
+('emily', 'emy', '', 'emily.furtado8@gmail.com', 'profilepicture.webp', 'defaultheader.jpg', 0),
+('euzinho', 'user-654d0e658d4963.', '', 'euzinho@gmail.com', 'profilepicture.webp', 'defaultheader.jpg', 0),
+('fillip', 'malvadonasafada', '', 'fillipgms@gmail.com', 'upload-651f026f84b760.56720188.jpg', 'defaultheader.jpg', 0),
+('luisa sonsa', 'user-654d29fd00b4b4.', '', 'sapequinha2@gmail.com', 'profilepicture.webp', 'defaultheader.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -90,7 +94,9 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`email`, `senha`) VALUES
 ('aa@a', '$2y$10$arAHvW8ETHySnN5l4yQvsObl1KtvqAXLt3GPZcIRtYYhi1xNglw7m'),
 ('emily.furtado8@gmail.com', '$2y$10$dMtoCOG3jQOGCK4oOn7A4OLxEj7G/qBJN9rpXFUeepbjGMfeQnuES'),
-('fillipgms@gmail.com', '$2y$10$S0WuKl34Zw1EY.FaF7sg6OnvQqOra1UceSSq3AS5yeO1B7SPaE/vm');
+('euzinho@gmail.com', '$2y$10$Hj6uR1GheDOyb/WTpncS9Opi5d6PIS4BaJVQpAy/7fQF8.Clsz2j6'),
+('fillipgms@gmail.com', '$2y$10$S0WuKl34Zw1EY.FaF7sg6OnvQqOra1UceSSq3AS5yeO1B7SPaE/vm'),
+('sapequinha2@gmail.com', '$2y$10$tPBL7TUjDroBDUx7kzYiU.i7QTZ3P0hXQP9FyqeGf4bHeViMHGa/C');
 
 --
 -- Índices para tabelas despejadas
