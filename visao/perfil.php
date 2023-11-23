@@ -45,15 +45,27 @@ if (!isset($_SESSION["usuario"])) {
         <section id="seuPerfil">
             <div id="profileInfos">
                 <span style="background-image:url(../public/imgs/<?=$imgPerfil["header"]?>);"></span>
+                
                 <img src=
                     <?php
                         echo "../public/imgs/". $selecionado["img_perfil"]; 
                     ?>
+                    id="fotodeperfil"
                 >
             </div>
             <div id="usuario">
                 <h1><?=$selecionado["nome"]?></h1>
                 <h2>@<?=$selecionado["username"]?></h2>
+                <?php
+                    if ($isUser) {
+                        ?>
+                            <div class="flexButtons">
+                                <a href="/click/visao/edicao.php?usuario=<?=$selecionado["username"]?>">editar perfil</a>
+                                <button>compartilhar perfil</button>
+                            </div>
+                        <?php
+                    }
+                ?>
             </div>
         </section>
         <section id="posts">
