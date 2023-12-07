@@ -6,7 +6,6 @@ if (!isset($_SESSION["usuario"])) {
 } else {
     $logado = true;
 }
-
     $selecionado = $_GET["usuario"];
     $stmt =  mysqli_prepare($conn, "SELECT * from perfil WHERE username = ?");
     mysqli_stmt_bind_param($stmt, "s", $selecionado);
@@ -37,7 +36,7 @@ if (!isset($_SESSION["usuario"])) {
     ?>
 
     <main>
-    <form action="/click/processadores/processar-editar-perfil.php" method="post">
+    <form action="/click/processadores/processar-editar-perfil.php" method="post" enctype="multipart/form-data">
         <section>
             <label for="updateHeader" class="imageUpdate inputLabel">
                 <img src="../public/imgs/<?=$selecionado["header"]?>" id="profileHeader">
@@ -51,7 +50,7 @@ if (!isset($_SESSION["usuario"])) {
             <div>
                 <label for="updateProfilePic" class="imageUpdate inputLabel" >
                     <img src="../public/imgs/<?=$selecionado["img_perfil"]?>" id="profilePic">
-                    <span class="spanLabel">
+                    <span class="spanLabel right">
                         <i class="fa-solid fa-pen"></i>
                     </span>
                     <input type="file" accept="image/png, image/gif, image/jpeg" name="updateProfilePic" id="updateProfilePic" value="<?=$selecionado["img_perfil"]?>" onChange="mudarProfile()">
@@ -72,7 +71,10 @@ if (!isset($_SESSION["usuario"])) {
                         <label for="updateBio">Biografia:</label>
                         <textarea name="updateBio" id="updateBio"><?=$selecionado["bio"]?></textarea>
                     </div>
-                    <input type="text" id="notshow" name="email" value="<?=$selecionado["email"]?>">
+                    <input type="text" class="notshow" name="email" value="<?=$selecionado["email"]?>">
+                    <input type="text" class="notshow" name="oldProfilePic" value="<?=$selecionado["img_perfil"]?>">
+                    <input type="text" class="notshow" name="oldHeader" value="<?=$selecionado["header"]?>">
+
                     <input type="submit" value="atualizar dados">
                 </form>
             </div>
