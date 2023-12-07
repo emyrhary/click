@@ -34,6 +34,7 @@ if (!isset($_SESSION["usuario"])) {
                     </a>';
                 };
         ?>
+
         <section id="firstContainer">
             <?php
                 if(isset($_GET['id'])) {
@@ -64,6 +65,13 @@ if (!isset($_SESSION["usuario"])) {
                                         <i class="fa-solid fa-thumbtack"></i>
                                     </figcaption>
                                 </figure>
+                                <?php
+                                    if ($usuario["email"] === $imgPerfil["email"]) {
+                                    ?>
+                                    <div class="flexButtons">
+                                    <button onClick="location.href = `/click/processadores/processar-apagar-post.php?url=<?=$imagem["url"]?>`">deletar post</button>
+                                    </div>
+                                    <?php } ?>
                             </div>
                             <div id="informacoesPublicadas" onClick="location.href = `/click/visao/perfil.php?usuario=<?=$usuario["username"]?>`">
                                 <div id="perfilPublicado">
