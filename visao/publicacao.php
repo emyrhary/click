@@ -66,12 +66,15 @@ if (!isset($_SESSION["usuario"])) {
                                     </figcaption>
                                 </figure>
                                 <?php
-                                    if ($usuario["email"] === $imgPerfil["email"]) {
+                                        if (isset($imgPerfil)) {
+                                            
+                                        
+                                        if ($usuario["email"] === $imgPerfil["email"]) {
                                     ?>
                                     <div class="flexButtons">
                                     <button onClick="location.href = `/click/processadores/processar-apagar-post.php?url=<?=$imagem["url"]?>`">deletar post</button>
                                     </div>
-                                    <?php } ?>
+                                    <?php } }?>
                             </div>
                             <div id="informacoesPublicadas" onClick="location.href = `/click/visao/perfil.php?usuario=<?=$usuario["username"]?>`">
                                 <div id="perfilPublicado">

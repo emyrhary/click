@@ -56,6 +56,7 @@ if (!isset($_SESSION["usuario"])) {
             <div id="usuario">
                 <h1><?=$selecionado["nome"]?></h1>
                 <h2>@<?=$selecionado["username"]?></h2>
+                <p><?=$selecionado["bio"]?></p>
                 <?php
                     if ($isUser) {
                         ?>
@@ -89,7 +90,7 @@ if (!isset($_SESSION["usuario"])) {
                         </figure>
                         
                     <?php }} else {
-                        echo "esse usuario aida não fez nenhuma postagem";
+                        echo "esse usuario ainda não fez nenhuma postagem";
                     }
                 ?>
             </div>

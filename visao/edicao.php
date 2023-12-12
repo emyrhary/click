@@ -56,7 +56,7 @@ if (!isset($_SESSION["usuario"])) {
                     <input type="file" accept="image/png, image/gif, image/jpeg" name="updateProfilePic" id="updateProfilePic" value="<?=$selecionado["img_perfil"]?>" onChange="mudarProfile()">
                 </label>
             </div>
-            <div>
+            <div id="formMain">
                     <div class="inputsFlex">
                         <div class="inputContainer">
                             <label for="updateNome">Nome:</label>
@@ -64,10 +64,14 @@ if (!isset($_SESSION["usuario"])) {
                         </div>
                         <div class="inputContainer">
                             <label for="updateUsername">Username:</label>
-                            <input type="text" name="updateUsername" id="updateUsername" value="<?=$selecionado["username"]?>">
+                            <span style="display: flex; align-items: center; gap: .25rem;">
+                                @
+                                <input type="text" name="updateUsername" id="updateUsername" value="<?=$selecionado["username"]?>">
+                            </span>
+                            
                         </div>
                     </div>
-                    <div class="inputContainer">
+                    <div class="bio">
                         <label for="updateBio">Biografia:</label>
                         <textarea name="updateBio" id="updateBio"><?=$selecionado["bio"]?></textarea>
                     </div>
