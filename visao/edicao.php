@@ -53,7 +53,7 @@ if (!isset($_SESSION["usuario"])) {
                     <span class="spanLabel right">
                         <i class="fa-solid fa-pen"></i>
                     </span>
-                    <input type="file" accept="image/png, image/gif, image/jpeg" name="updateProfilePic" id="updateProfilePic" value="<?=$selecionado["img_perfil"]?>" onChange="mudarProfile()">
+                    <input type="file" accept="image/*" name="updateProfilePic" id="updateProfilePic" value="<?=$selecionado["img_perfil"]?>" onChange="mudarProfile()">
                 </label>
             </div>
             <div id="formMain">

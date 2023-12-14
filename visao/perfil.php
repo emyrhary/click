@@ -29,7 +29,10 @@ if (!isset($_SESSION["usuario"])) {
 <body>
     <?php
         include("../components/header.php");
-        $isUser = $selecionado["username"] === $imgPerfil["username"];
+        if (isset($imgPerfil)) {
+            $isUser = $selecionado["username"] === $imgPerfil["username"];
+        }
+        
         
         if ($logado) {
             echo'
@@ -44,7 +47,7 @@ if (!isset($_SESSION["usuario"])) {
     <main id="perfil">
         <section id="seuPerfil">
             <div id="profileInfos">
-                <span style="background-image:url(../public/imgs/<?=$imgPerfil["header"]?>);"></span>
+                <span style="background-image:url(../public/imgs/<?=$selecionado["header"]?>);"></span>
                 
                 <img src=
                     <?php
@@ -58,7 +61,7 @@ if (!isset($_SESSION["usuario"])) {
                 <h2>@<?=$selecionado["username"]?></h2>
                 <p><?=$selecionado["bio"]?></p>
                 <?php
-                    if ($isUser) {
+                    if (isset($isUser)) {
                         ?>
                             <div class="flexButtons">
                                 <a href="/click/visao/edicao.php?usuario=<?=$selecionado["username"]?>">editar perfil</a>
