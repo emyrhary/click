@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07-Dez-2023 às 19:02
+-- Tempo de geração: 14-Dez-2023 às 17:54
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.0.19
 
@@ -45,7 +45,7 @@ INSERT INTO `perfil` (`nome`, `username`, `bio`, `email`, `img_perfil`, `header`
 ('aa', 'user-651f0b114acc63.', '', 'aa@a', 'profilepicture.webp', 'defaultheader.jpg', 0),
 ('emily', 'emy', '', 'emily.furtado8@gmail.com', 'profilepicture.webp', 'defaultheader.jpg', 0),
 ('euzinho', 'user-654d0e658d4963.', '', 'euzinho@gmail.com', 'profilepicture.webp', 'defaultheader.jpg', 0),
-('Fillip', 'malvadonasafada', '', 'fillipgms@gmail.com', 'upload-657207d2686376.04506057.jpg', 'upload-657208a109bb14.61462507.jpg', 0),
+('Fillip', 'malvadonasafada', '', 'fillipgms@gmail.com', 'upload-657b306e0d3f51.63854074.webp', 'upload-657b306e0d5330.06279143.jpg_large', 0),
 ('luisa sonsa', 'user-654d29fd00b4b4.', '', 'sapequinha2@gmail.com', 'profilepicture.webp', 'defaultheader.jpg', 0);
 
 -- --------------------------------------------------------
